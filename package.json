@@ -1,0 +1,26 @@
+{
+  "name": "foxpro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "test": "playwright test",
+    "preview": "vite build && vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "solid-js": "^1.6.11",
+    "vite": "^4.1.4",
+    "vite-plugin-ssr": "^0.4.89"
+  },
+  "devDependencies": {
+    "@types/node": "^18.14.5",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-image-presets": "^0.3.4",
+    "vite-plugin-solid": "^2.6.1"
+  }
+}

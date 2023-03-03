@@ -1,0 +1,40 @@
+{
+    "compilerOptions": {
+       "strict": false,
+       "checkJs": true,
+       "module": "esnext",
+       "target": "esnext",
+       "importsNotUsedAsValues": "error",
+       "baseUrl": ".",
+       "noEmit": true,
+       "isolatedModules": true,
+       "jsx": "preserve",
+       "jsxImportSource": "solid-js",
+       "allowSyntheticDefaultImports": true,
+       "moduleResolution": "node",
+       // Misc
+       "noErrorTruncation": false,
+       "forceConsistentCasingInFileNames": true,
+       "esModuleInterop": true,
+       "experimentalDecorators": true,
+       "emitDecoratorMetadata": true,
+       "paths": {
+          "~/*": [
+             "./*"
+          ]
+       },
+       "types": [
+          "vite/client",
+       ],
+       "skipDefaultLibCheck": true,
+    },
+    "exclude": [
+       "node_modules",
+       ".vscode",
+       "assets",
+       ".git",
+       "temp",
+       "dist"
+    ]
+ }
+ 
