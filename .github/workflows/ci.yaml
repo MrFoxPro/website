@@ -10,8 +10,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     env:
-      IS_RELEASE: github.event_name == 'release' && github.event.action == 'created'
-      TARGET_NAME: ${{ (github.event_name == 'release' && github.event.action == 'created') && 'foxpro.su' || format('{0}.foxpro.su', github.ref_name) }}
+      TARGET_NAME: ${{ (github.ref_name == 'master') && 'foxpro.su' || format('{0}.foxpro.su', github.ref_name) }}
     steps:
       - name: checkout
         uses: actions/checkout@v3
