@@ -1,0 +1,70 @@
+name: foxpro blog ci
+
+on:
+  push:
+    branches:
+      - master
+      - next
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      IS_RELEASE: github.event_name == 'release' && github.event.action == 'created'
+      TARGET_NAME: ${{ (github.event_name == 'release' && github.event.action == 'created') && 'foxpro.su' || format('{0}.foxpro.su', github.ref_name) }}
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: install node
+        uses: actions/setup-node@v3
+        with:
+          node-version: latest
+
+      - name: install pnpm
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: latest
+          run_install: false
+
+      - name: get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('./pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: pnpm install
+        run: pnpm i --frozen-lockfile
+
+      - name: build all
+        run: pnpm build
+
+      - name: setup ssh
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSHKEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          cat >>~/.ssh/config <<END
+          Host vps
+            HostName ${{ secrets.HOST }}
+            User ${{ secrets.USERNAME }}
+            IdentityFile ~/.ssh/id_rsa
+            Port ${{ secrets.PORT }}
+            StrictHostKeyChecking no
+            ConnectTimeout 10
+          END
+
+      - name: operate
+        run: |
+          rsync --progress --partial ./etc/nginx/${{ env.TARGET_NAME }}.conf vps:/etc/nginx/sites/
+          rsync --archive --partial --progress --preallocate --mkpath --links --compress --verbose --rsh="ssh" --delete ./dist/client/* foxpro@beget-1:~/deployment/foxpro.su/web
+          ssh vps 'sudo nginx -s reload'
