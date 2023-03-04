@@ -25,6 +25,7 @@ export default (/** @type import('vite').ConfigEnv */ { mode }) => {
       assetsInclude: [/\.mp4$/, /\.webm$/],
       clearScreen: true,
       appType: "custom",
+      publicDir: './public',
       root: __dirname,
       define: {
          GIT_COMMIT_DATE: git("git log -1 --format=%cI"),
