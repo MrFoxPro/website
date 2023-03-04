@@ -65,5 +65,5 @@ jobs:
       - name: operate
         run: |
           rsync --progress --partial ./etc/nginx/${{ env.TARGET_NAME }}.conf vps:/etc/nginx/sites/
-          rsync --archive --partial --progress --preallocate --mkpath --links --compress --verbose --rsh="ssh" --delete ./dist/client/* foxpro@beget-1:~/deployment/foxpro.su/web
+          rsync --archive --partial --progress --preallocate --mkpath --links --compress --verbose --rsh="ssh" --delete ./dist/client/* foxpro@vps:~/deployment/foxpro.su/web
           ssh vps 'sudo nginx -s reload'
