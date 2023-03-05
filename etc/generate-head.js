@@ -12,4 +12,4 @@ const { files, images, html } = await favicons('./etc/foxpro.png', {
 
 await fs.mkdir(dist, { recursive: true })
 await Promise.all([...files, ...images].map((image) => fs.writeFile(dist + image.name, image.contents)))
-await fs.writeFile('./pages/renderer/head.html', html.join(EOL))
+await fs.writeFile('./renderer/favicons.html', html.join(EOL))
