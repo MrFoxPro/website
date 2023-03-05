@@ -1,4 +1,4 @@
-import { generateHydrationScript, NoHydration, renderToStream } from 'solid-js/web'
+import { generateHydrationScript, renderToStream } from 'solid-js/web'
 import { escapeInject as escape, dangerouslySkipEscape as skip, stampPipe } from 'vite-plugin-ssr'
 import type { PageContextBuiltIn } from 'vite-plugin-ssr'
 import Favicons from './favicons.html?raw'
@@ -9,10 +9,7 @@ const head = [Favicons]
 
 export function render(ctx: PageContextBuiltIn) {
    const {
-      Page,
-      is404,
-      urlParsed,
-      exports: { hydrate, Layout },
+      exports: { hydrate },
    } = ctx
 
    const Comp = prepare_page(ctx)

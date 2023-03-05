@@ -43,21 +43,23 @@ export default (/** @type import('vite').ConfigEnv */ { mode }) => {
          port: 3000,
       },
       plugins: [
-         // ViteAutoImport({
-         //    imports: [{ '@linaria/core': ['css'] }],
-         //    dts: './types/auto-imports.d.ts',
-         // }),
-         // ViteLinaria({
-         //    displayName: true,
-         //    babelOptions: {
-         //       presets: [
-         //          ['solid', { generate: 'dom' }],
-         //          ['@babel/typescript', { onlyRemoveTypeImports: true }],
-         //       ],
-         //    },
-         // }),
-
-         // { plugins: [[RemarkTypograf, { locale: ['ru'] }]] }
+         ViteAutoImport({
+            imports: [{ '@linaria/core': ['css'] }],
+            dts: './types/auto-imports.d.ts',
+         }),
+         // Place it only here! with enforce: 'pre'!
+         {
+            ...ViteLinaria({
+               displayName: true,
+               babelOptions: {
+                  presets: [
+                     ['solid', { generate: 'ssr' }],
+                     ['@babel/typescript', { onlyRemoveTypeImports: true }],
+                  ],
+               },
+            }),
+            enforce: 'pre',
+         },
          RollupMDX({
             development: dev,
             // jsx: true,
@@ -65,6 +67,7 @@ export default (/** @type import('vite').ConfigEnv */ { mode }) => {
             jsxImportSource: 'solid-jsx',
             jsxRuntime: 'automatic',
             stylePropertyNameCase: 'css',
+            // { plugins: [[RemarkTypograf, { locale: ['ru'] }]] }
             remarkPlugins: [
                RemarkBreaks,
                [RemarkGFM, {}],
@@ -82,7 +85,7 @@ export default (/** @type import('vite').ConfigEnv */ { mode }) => {
          // ViteImagePresets(),
          // ViteSolidSVG({ defaultAsComponent: true }),
          VPS({
-            includeAssetsImportedByServer: true,
+            includeAssetsImportedByServer: false,
             prerender: {
                partial: true,
                noExtraDir: true,
