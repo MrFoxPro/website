@@ -75,8 +75,8 @@ export default (/** @type import('vite').ConfigEnv */ { mode }) => {
             rehypePlugins: [RemarkAutolinkHeadings],
          }),
          ViteSolid({
-            dev: dev,
-            hot: dev,
+            dev: false,
+            hot: false,
             ssr: true,
          }),
          // ViteImagePresets(),

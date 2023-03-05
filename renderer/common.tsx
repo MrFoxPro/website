@@ -1,26 +1,27 @@
-import { createComponent } from 'solid-js'
-import { NoHydration, isServer } from 'solid-js/web'
+import { Component, createComponent, JSX, ParentComponent } from 'solid-js'
+import { NoHydration } from 'solid-js/web'
 
-function spawned_wrap(target, ...parents) {
-   for (const comp of parents) {
-      if (!comp) continue
-      target = createComponent(comp, { children: target })
+function spawned_wrap(target: Component, ...parents: Component[]) {
+   let _target: JSX.Element = target({})
+   for (const p of parents) {
+      if (!p) continue
+      _target = createComponent(p, { children: target })
    }
-   return target
+   return () => _target
 }
 
-export function wrap(Comp, ...parents) {
-   return function () {
-      for (const Wrapper of parents) {
-         if (!Wrapper) continue
-         Comp = (
-            <Wrapper>
-               <Comp />
-            </Wrapper>
-         )
-      }
-      return Comp
+export function abstract_wrap(target: Component, ...parents: ParentComponent[]) {
+   let Comp = target
+   for (const Wrapper of parents) {
+      if (!Wrapper) continue
+      const Copy = Comp
+      Comp = () => (
+         <Wrapper>
+            <Copy />
+         </Wrapper>
+      )
    }
+   return Comp
 }
 
 export function prepare_page(ctx) {
@@ -29,8 +30,8 @@ export function prepare_page(ctx) {
       exports: { hydrate, Layout },
    } = ctx
 
-   // const Comp = wrap(Page, Layout)
-   const Comp = spawned_wrap(Page, Layout)
+   const Comp = abstract_wrap(Page, Layout)
+
    return () =>
       !hydrate ? (
          <NoHydration>

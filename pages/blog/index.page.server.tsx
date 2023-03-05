@@ -14,10 +14,10 @@ export function Page(ctx) {
       </>
    )
 }
-export function render(ctx) {
-   console.log(ctx)
-   return null
-}
+// export function render(ctx) {
+//    console.log(ctx)
+//    return null
+// }
 
 // override layout here, because it uses from /blog for this Page too =(
 export function Layout(props) {

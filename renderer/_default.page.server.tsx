@@ -16,7 +16,6 @@ export function render(ctx: PageContextBuiltIn) {
    } = ctx
 
    const Comp = prepare_page(ctx)
-
    const { pipe } = renderToStream(Comp)
 
    stampPipe(pipe, 'node-stream')
