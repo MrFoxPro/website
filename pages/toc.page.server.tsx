@@ -10,7 +10,6 @@ const articles = Object.values(import.meta.glob<Article>('./**/*.md(x)?', { eage
 
 // We can't resolve url of each page programmatically in normal way.
 // https://github.com/brillout/vite-plugin-ssr/discussions/680
-
 export function Page() {
    return (
       <>

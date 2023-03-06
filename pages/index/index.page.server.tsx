@@ -1,12 +1,17 @@
+// import './test.css'
+import { css } from '@linaria/core'
+
 export function Page() {
    return (
-      <>
-         {">^_^<"}
-         <nav>
-            <a href="/cv.ru">cv 🇷🇺</a> <br />
-            <a href="/cv.en">cv 🇬🇧</a> <br />
-            <a href="/blog">/blog</a> <br />
-         </nav>
-      </>
+      <main
+         class={css`
+         display: flex;
+         height: 100%;
+         margin: 0 auto;
+         font-size: 15vw;
+      `}
+      >
+         {'>^_^<'}
+      </main>
    )
 }

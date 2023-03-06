@@ -1,4 +1,5 @@
-import { Component, createComponent, createContext, JSX, ParentComponent, useContext } from 'solid-js'
+import { createComponent, createContext, useContext } from 'solid-js'
+import type { JSX, Component, ParentComponent } from 'solid-js'
 import { NoHydration } from 'solid-js/web'
 import type { PageContextBuiltIn } from 'vite-plugin-ssr'
 
@@ -12,7 +13,7 @@ function spawned_wrap(target: Component, ...parents: Component[]) {
 }
 
 export function abstract_wrap(target: Component, ...parents: ParentComponent[]) {
-   if (!target || typeof target != 'function') {
+   if (!target || target.constructor instanceof Function == false) {
       console.warn('Attempt to wrap null or not a function', target)
       return null
    }
