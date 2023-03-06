@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 import { visualizer as RollupVisualizer } from 'rollup-plugin-visualizer'
 import ViteLinaria from '@linaria/vite'
 import { compile, serialize, stringify } from 'stylis'
-import ViteAutoImport from 'unplugin-auto-import/vite'
+// import ViteAutoImport from 'unplugin-auto-import/vite'
 import ViteCompression from 'vite-plugin-compression'
 import ViteImagePresets from 'vite-plugin-image-presets'
 import ViteSolid from 'vite-plugin-solid'
@@ -14,7 +14,7 @@ import RollupMDX from '@mdx-js/rollup'
 import ViteInspect from 'vite-plugin-inspect'
 import RemarkGFM from 'remark-gfm'
 import RemarkBreaks from 'remark-breaks'
-import RemarkTypograf from '@mavrin/remark-typograf'
+// import RemarkTypograf from '@mavrin/remark-typograf'
 import RemarkFrontmatter from 'remark-frontmatter'
 import RemarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import RemarkMath from 'remark-math'
@@ -45,7 +45,7 @@ export default (/** @type import('vite').ConfigEnv */ { mode }) => {
       plugins: [
          // There is problem with plugins order with linaria.
          // Place it only here! with enforce: 'pre'!
-         // Also, there are problems with auto-import plugin -_-
+         // Also, there are problems with auto-import plugin -_- because it's 'pre'
          {
             ...ViteLinaria({
                displayName: true,

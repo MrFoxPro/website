@@ -1,10 +1,10 @@
 import { css } from '@linaria/core'
-import { NavLayout } from '../_default.page'
+import { NavigationLayout } from '../_default.page'
 
 export function ArticleLayout(props) {
    return (
       <>
-         <NavLayout>
+         <NavigationLayout>
             <div
                class={css`
                   p {
@@ -14,7 +14,7 @@ export function ArticleLayout(props) {
             >
                Blog layout
             </div>
-         </NavLayout>
+         </NavigationLayout>
          <article>{props.children}</article>
       </>
    )

@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "command": "pnpm dev",
-            "name": "pnpm dev",
+            "command": "pnpm preview",
+            "name": "pnpm preview",
             "request": "launch",
             "type": "node-terminal"
-        }
+        },
     ]
 }

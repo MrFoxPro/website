@@ -1,10 +1,10 @@
 import { css } from '@linaria/core'
 import type { PageContextBuiltInClient } from 'vite-plugin-ssr/client'
-import { NavLayout } from '../pages/_default.page'
+import { NavigationLayout } from '../pages/_default.page'
 
 export function Page(ctx: PageContextBuiltInClient) {
    return (
-      <NavLayout>
+      <NavigationLayout>
          <div
             class={css`
                width: 100%;
@@ -14,6 +14,6 @@ export function Page(ctx: PageContextBuiltInClient) {
          >
             404
          </div>
-      </NavLayout>
+      </NavigationLayout>
    )
 }

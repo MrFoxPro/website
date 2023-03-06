@@ -1,4 +1,3 @@
-// import './test.css'
 import { css } from '@linaria/core'
 
 export function Page() {
@@ -11,7 +10,7 @@ export function Page() {
          font-size: 15vw;
       `}
       >
-         {'>^_^<'}
+         <span class={css`margin: 0 auto;`}>{'>^_^<'}</span>
       </main>
    )
 }

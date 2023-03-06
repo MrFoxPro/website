@@ -1,7 +1,8 @@
 import { createComponent, createContext, useContext } from 'solid-js'
 import type { JSX, Component, ParentComponent } from 'solid-js'
-import { NoHydration } from 'solid-js/web'
+import { isServer, NoHydration } from 'solid-js/web'
 import type { PageContextBuiltIn } from 'vite-plugin-ssr'
+import { MetaProvider } from '@solidjs/meta'
 
 function spawned_wrap(target: Component, ...parents: Component[]) {
    let _target: JSX.Element = target({})
@@ -12,7 +13,7 @@ function spawned_wrap(target: Component, ...parents: Component[]) {
    return () => _target
 }
 
-export function abstract_wrap(target: Component, ...parents: ParentComponent[]) {
+export function abstract_wrap(target: Component, ...parents: (ParentComponent | false)[]) {
    if (!target || target.constructor instanceof Function == false) {
       console.warn('Attempt to wrap null or not a function', target)
       return null
@@ -43,7 +44,13 @@ export function prepare_page(ctx: PageContextBuiltIn<Component>) {
    } = ctx
 
    const PageContextWrapper = createPageContextWrapper(ctx)
-   const Comp = abstract_wrap(Page, Layout as ParentComponent, PageContextWrapper)
+   const Comp = abstract_wrap(
+      Page,
+      Layout as ParentComponent,
+      PageContextWrapper,
+      // isServer && MetaProvider.bind(this, { tags: [] }),
+      // !isServer && MetaProvider,
+   )
 
    return () =>
       !hydrate ? (
