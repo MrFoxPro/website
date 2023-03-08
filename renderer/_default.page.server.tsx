@@ -2,9 +2,10 @@ import { join } from "path"
 import { readFile } from "fs/promises"
 
 import { html } from "common-tags"
-import { generateHydrationScript, renderToStringAsync } from "solid-js/web"
+import { generateHydrationScript, NoHydration, renderToString } from "solid-js/web"
 import type { InjectFilterEntry } from "vite-plugin-ssr"
 import { MetaProvider, renderTags } from "@solidjs/meta"
+import type { JSX } from "solid-js/jsx-runtime"
 
 import favicons from "./favicons.html?raw"
 import { preparePage, type PageContext } from "./common"
@@ -25,10 +26,9 @@ export async function render(ctx: PageContext) {
    } = ctx
 
    const tags = []
-
-   const Comp = preparePage(ctx, (props) => MetaProvider({ ...props, tags }))
-
-   const body = await renderToStringAsync(Comp)
+   const MetaWrapper = (props) => MetaProvider({ tags, children: props.children })
+   const Comp = preparePage(ctx, MetaWrapper)
+   const body = renderToString(!hydrate ? NoHydration({ children: Comp() }) as () => JSX.Element : Comp)
 
    const head = [favicons].concat(renderTags(tags))
    if (hydrate) head.push(hydrationScript)
@@ -64,7 +64,7 @@ export async function render(ctx: PageContext) {
       },
       injectFilter: (assets: InjectFilterEntry[]) => {
          if (!ctx._isHtmlOnly) return
-         for (const a of assets) assetsToSkip.has(a.src) && (a.inject = false) 
+         for (const a of assets) assetsToSkip.has(a.src) && (a.inject = false)
       },
    }
 }

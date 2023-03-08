@@ -5,7 +5,7 @@ import { EOL } from "node:os"
 
 import { visualizer as RollupVisualizer } from "rollup-plugin-visualizer"
 import ViteLinaria from "@linaria/vite"
-import { compile, serialize, stringify } from "stylis"
+import postcss from "postcss"
 // import ViteAutoImport from 'unplugin-auto-import/vite'
 import ViteCompression from "vite-plugin-compression"
 import ViteImagePresets from "vite-plugin-image-presets"
@@ -46,8 +46,8 @@ export default ({ mode }: ConfigEnv) => {
          port: 3000,
          open: false,
          proxy: {
-            "/cloud/": {
-               target: "https://foxpro.su/cloud/"
+            "/cloud": {
+               hostRewrite: "foxpro.su"
             }
          },
       },
@@ -64,8 +64,11 @@ export default ({ mode }: ConfigEnv) => {
                      ["@babel/typescript", { onlyRemoveTypeImports: true }],
                   ],
                },
-               preprocessor: (selector, css) =>
-                  serialize(compile(selector + "{" + css + "}"), stringify) + EOL,
+               // preprocessor: (selector, css) => {
+               // console.log('sele')
+               // const r = postcss.parse(selector + "{" + css + "}").toString()
+               // return r
+               // }
             }),
             enforce: "pre",
          },
@@ -116,7 +119,16 @@ export default ({ mode }: ConfigEnv) => {
          }),
       ],
       resolve: { alias: { "~": Path.resolve(".") } },
-      css: { modules: false },
+      css: {
+         modules: false,
+         postcss: {
+            plugins: [],
+            map: {
+               // annotation: true,
+               annotation: "CSS ANNOTATION"
+            }
+         }
+      },
       build: {
          outDir,
          modulePreload: {

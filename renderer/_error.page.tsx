@@ -1,6 +1,7 @@
-import { css } from '@linaria/core'
-import type { PageContextBuiltInClient } from 'vite-plugin-ssr/client'
-import { NavigationLayout } from '../pages/nav_layout'
+import { css } from "@linaria/core"
+import type { PageContextBuiltInClient } from "vite-plugin-ssr/client"
+
+import { NavigationLayout } from "../pages/nav_layout"
 
 export function Page(ctx: PageContextBuiltInClient) {
    return (

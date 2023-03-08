@@ -14,8 +14,8 @@ export function NavigationLayout(props) {
    const { urlPathname } = getPageContext()
    return (
       <>
-         <header class={css`display: flow-root;`}>
-            <div class={css`font-size: 36px;`}>
+         <header style={{ display: "flow-root" }}>
+            <div style={{ "font-size": "36px" }}>
                <b>foxpro</b> website
             </div>
             <nav
@@ -28,7 +28,7 @@ export function NavigationLayout(props) {
                         margin-inline-start: 10px;
                      }
                      &:visited, &:not(:visited) {
-                        color: initial;
+                        color: inherit;
                      }
                      &:hover {
                         color: #7a7a7a70;

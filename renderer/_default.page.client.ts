@@ -1,4 +1,4 @@
-import { hydrate as solid_hydrate } from "solid-js/web"
+import { hydrate as hydrateSolid, NoHydration } from "solid-js/web"
 import { MetaProvider } from "@solidjs/meta"
 
 import { preparePage } from "./common"
@@ -10,7 +10,7 @@ export function render(ctx: PageContext) {
    } = ctx
    if (hydrate) {
       const Comp = preparePage(ctx, MetaProvider)
-      solid_hydrate(Comp, document.body)
+      hydrateSolid(Comp, document.body)
    }
 }
 
