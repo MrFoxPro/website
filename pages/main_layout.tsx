@@ -44,13 +44,13 @@ export function MainLayout(props) {
                      </a>
                   ))}
                   <a class={css`float: right; &:hover { color: #dedede !important }`} href="https://github.com/MrFoxPro/website" target="blank">
-                     source
+                     src
                   </a>
                   <a class={css`float: right; &:hover { color: #5794e0 !important }`} href="https://t.me/MrFoxPro" target="blank">
                      tg
                   </a>
                   <a class={css`float: right; &:hover { color: #e0575b !important }`} href="mailto:tuningiposadka@gmail.com" target="blank">
-                     gmail
+                     mail
                   </a>
                </nav>
             </header>
