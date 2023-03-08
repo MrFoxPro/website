@@ -4,8 +4,8 @@ import { getPageContext } from "../renderer/common"
 
 const links = [
    ["/", ">^_^<"],
-   ["/blog/", "blog/"],
-   ["/cloud/", "cloud/"],
+   ["/blog", "blog"],
+   ["/cloud", "cloud"],
    ["/cv.ru", "cv ru"],
    ["/cv.en", "cv en"],
 ] as const
