@@ -1,0 +1,11 @@
+{
+    "eslint.codeAction.disableRuleComment": {
+        "enable": false,
+        "location": "separateLine",
+        "commentStyle": "line"
+    },
+    "eslint.codeAction.showDocumentation": {
+        "enable": false
+    },
+    "eslint.codeActionsOnSave.mode": "all",
+}

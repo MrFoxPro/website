@@ -1,59 +1,46 @@
-// import { escapeInject as escape, dangerouslySkipEscape as skip } from 'vite-plugin-ssr'
-import Path from 'path'
-import { readFile } from 'fs/promises'
-import { generateHydrationScript, renderToStringAsync } from 'solid-js/web'
-import { collect } from '@linaria/server'
-import { prepare_page } from './common'
-import Favicons from './favicons.html?raw'
-import type { ViteDevServer } from 'vite'
-import { html } from 'common-tags'
-import type { PageContextBuiltIn, InjectFilterEntry } from 'vite-plugin-ssr'
+import { join } from "path"
+import { readFile } from "fs/promises"
+
+import { html } from "common-tags"
+import { generateHydrationScript, renderToStringAsync } from "solid-js/web"
+import type { InjectFilterEntry } from "vite-plugin-ssr"
+import { MetaProvider, renderTags } from "@solidjs/meta"
+
+import favicons from "./favicons.html?raw"
+import { preparePage, type PageContext } from "./common"
 
 const hydrationScript = generateHydrationScript()
-const viteDevServer = globalThis.__vite_plugin_ssr['globalContext.ts'].viteDevServer as ViteDevServer
-const viteConfig = globalThis['__vite_plugin_ssr']['globalContext.ts']['config']
+const {
+   config: { root, build: { outDir } },
+   viteDevServer,
+} = globalThis["__vite_plugin_ssr"]["globalContext.ts"]
 
-export async function render(
-   ctx: PageContextBuiltIn & { _isHtmlOnly: boolean; __getPageAssets: () => Promise<InjectFilterEntry[]> },
-) {
+export const passToClient = ["urlPathname"]
+
+export async function render(ctx: PageContext) {
    const {
       exports: { hydrate },
+      _isHtmlOnly,
+      _getPageAssets
    } = ctx
 
-   const Comp = prepare_page(ctx)
+   const tags = []
+
+   const Comp = preparePage(ctx, (props) => MetaProvider({ ...props, tags }))
+
    const body = await renderToStringAsync(Comp)
 
-   const head = [Favicons]
-   const assets_to_skip = new Set()
-
+   const head = [favicons].concat(renderTags(tags))
    if (hydrate) head.push(hydrationScript)
 
-   if (!viteDevServer && ctx._isHtmlOnly) {
-      const assets = await ctx.__getPageAssets()
-      for (const a of assets) {
-         if (a.assetType != 'style') continue
-         // let css: string
-         // if (viteDevServer) {
-         //    const mod = await viteDevServer.moduleGraph.getModuleByUrl(a.src)
-         //    content = mod?.transformResult.code
-         // } else
-         const css = await readFile(Path.join(viteConfig.root, viteConfig.build.outDir, a.src), {
-            encoding: 'utf8',
-         })
-         // const { critical, other } = collect(body, css)
-         // if (css.trim() === critical.trim()) {
-         // console.info('Injecting critical to head >>', a.src)
+   const assetsToSkip = new Set()
+   if (!viteDevServer && _isHtmlOnly) {
+      const assets = await _getPageAssets()
+      for (const { src, assetType } of assets) {
+         if (assetType != "style") continue
+         const css = await readFile(join(root, outDir, src))
          head.unshift(`<style>${css}</style>`)
-         // a.inject = false - will not work here
-         assets_to_skip.add(a.src)
-         // }
-      }
-   }
-
-   const injectFilter = (assets: InjectFilterEntry[]) => {
-      if (!ctx._isHtmlOnly) return
-      for (const a of assets) {
-         if (assets_to_skip.has(a.src)) a.inject = false
+         assetsToSkip.add(src)
       }
    }
 
@@ -62,21 +49,22 @@ export async function render(
             <html lang="en">
             <head>
                <meta name="viewport" content="width=device-width, initial-scale=1" />
-               <title>foxpro website</title>
-               ${head.join('\n')}
+               ${head.join("\n")}
             </head>
             <body>${body}</body>
          </html>
       `
 
    return {
-      // bypass vps restiction
       documentHtml: {
          _template: {
             templateStrings: [documentHtml],
             templateVariables: [],
          },
       },
-      injectFilter,
+      injectFilter: (assets: InjectFilterEntry[]) => {
+         if (!ctx._isHtmlOnly) return
+         for (const a of assets) assetsToSkip.has(a.src) && (a.inject = false) 
+      },
    }
 }
