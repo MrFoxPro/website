@@ -59,9 +59,6 @@ export function MainLayout(props) {
                      gap: 10px;
                      align-items: center;
                      > a {
-                        &:hover {
-                           color: #7a7a7a70;
-                        }
                         &:visited {
                            color: inherit;
                         }

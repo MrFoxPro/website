@@ -1,5 +1,5 @@
 # Никифоров Дмитрий Алексеевич
-[🔗Telegram](https://t.me/MrFoxPro) [🔗Github](https://github.com/MrFoxPro) [🔗StackOverflow](https://stackoverflow.com/users/8086153/foxpro)
+[Telegram](https://t.me/MrFoxPro) [Github](https://github.com/MrFoxPro) [StackOverflow](https://stackoverflow.com/users/8086153/foxpro)
 ### Разработчик
 ### Россия, Екатеринбург
 
@@ -19,7 +19,7 @@ WebGPU, Biotech, Rust, Nix, – темы, в которых я хотел бы �
 
 ● Разработка платформы для взаимодействия жильцов и УК.
 `KeystoneJS, GraphQL, Jest, Github CI/CD`
-[🔗source](https://github.com/open-condo-software/condo)
+[source](https://github.com/open-condo-software/condo)
 
 ----------
 
@@ -63,23 +63,21 @@ WebGPU, Biotech, Rust, Nix, – темы, в которых я хотел бы �
 ----------
 
 ## Личные проекты
-```
-🔴 – Заброшен 
+🔴 – Заброшен
 🟡 – В процессе
-🟢 – Закончен 
-```
+🟢 – Закончен
 
 🟡 Система управления знаниями Bloki. 
 `WebGPU, Typescript, SolidJS, Rust, EdgeDB`
-[🔗source](https://github.com/MrFoxPro/bloki) [🔗video](https://youtu.be/PsEwt068DGk) [🔗demo](https://old.bloki.app)
+[source](https://github.com/MrFoxPro/bloki) [video](https://youtu.be/PsEwt068DGk) [demo](https://old.bloki.app)
 
 🟡 Универсальная образовательная платформа полного цикла Маркбук.
 `Solid JS, Typescript, SCSS, ASP.NET, Entity Framework Core`
-[🔗demo](https://маркбук.рф)
+[demo](https://маркбук.рф)
 
 🟢 Мобильное приложение “Остановочка” для отображения транспорта г. Екатеринбурга с фотографиями и маршрутами.
 `React Native, Google Maps API`
-[🔗source](https://play.google.com/store/apps/details?id=com.foxpro.mystop)
+[source](https://play.google.com/store/apps/details?id=com.foxpro.mystop)
 
 🟢 Небольшие работы на гитхабе.
 - [Solid Nativescript experiments](https://github.com/MrFoxPro/solid-nativescript-experiments)
@@ -90,30 +88,30 @@ WebGPU, Biotech, Rust, Nix, – темы, в которых я хотел бы �
 
 🔴 Игровой проект для GTA 5 на платформе RAGE Multiplayer.
 `C#, EF Core, Typescript, Solid JS, SCSS, NSWAG, Gitlab CI/CD`
-[🔗video](https://youtu.be/yO5Eh1O7hu4) [🔗video](https://youtu.be/FVEyBlaWUH0) [🔗video](https://youtu.be/8dklgOaIZKc) [🔗video](https://youtu.be/577mfkMPw2I) [🔗video](https://youtu.be/6bI9qxQSChg)
+[video](https://youtu.be/yO5Eh1O7hu4) [video](https://youtu.be/FVEyBlaWUH0) [video](https://youtu.be/8dklgOaIZKc) [video](https://youtu.be/577mfkMPw2I) [video](https://youtu.be/6bI9qxQSChg)
 
 🟢 Различные устройства и роботы на Arduino, RPI.
 `C, Python, обмен данными по UART, I2C`
-[🔗video](https://youtu.be/vFrA2IepCgY)
+[video](https://youtu.be/vFrA2IepCgY)
 
 🟢 Мобильный клиент для ресурса Дневник.Ру.
 *перестало быть актуальным, снеснео Google*
 `React Native, REST`
-[🔗video](https://vk.com/markbook_mobile)
+[video](https://vk.com/markbook_mobile)
 
 🟢 Скрипты и дополнения для мультиплеерного мода SAMP.
 `Lua`
-[🔗source](https://www.blast.hk/threads/22886/post-682482)
+[source](https://www.blast.hk/threads/22886/post-682482)
 
 🔴 Игра в жанре гонок на Unity 3D с мультиплеером.
 `Unity 3D, C#, UDP, NodeJS`
-[🔗video](https://youtube.com/watch?v=gciYUXdWXtk) [🔗video](https://youtu.be/PqFsgA2MB9I) [🔗video](https://youtu.be/wVNpyazp-As)
+[video](https://youtube.com/watch?v=gciYUXdWXtk) [video](https://youtu.be/PqFsgA2MB9I) [video](https://youtu.be/wVNpyazp-As)
 
 🔴 Боты для телеграмма: 
 Caturday - по команде присылает картинки котиков. 
 dead friend - публикует в канал информацию из википедии по вымершим животным из красной книги.
 `Python, Node`
-[🔗demo](https://t.me/+RviyfJcAMagzy37V)
+[demo](https://t.me/+RviyfJcAMagzy37V)
 
 # Образование
 ### 🎓 УрФУ, ИРИТ-РТФ, Программная инженерия, Екатеринбург

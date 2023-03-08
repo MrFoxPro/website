@@ -23,15 +23,19 @@ css`/* global */
          color: inherit;
       }
       &:visited {
-         color: #885ad9;
+         color: #a57ee7;
       }
       &:active {
          color: indianred;
       }
+      &:hover {
+        color: #a1a1a1a2;
+      }
    }
    code {
-    font-family: 'Consolas', monospace;
+      font-family: 'Consolas', monospace;
    }
+   pre { white-space:pre }
 `
 
 css`/* global */
