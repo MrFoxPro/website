@@ -20,35 +20,8 @@ export function MainLayout(props) {
                <div style={{ "font-size": "clamp(24px, 2.5vw, 36px)" }}>
                   <b>foxpro</b> website
                </div>
-               <nav class={css`
-                     margin-top: 10px;
-                     display: flex;
-                     gap: 10px;
-                     align-items: center;
-                     > a {
-                        &:hover {
-                           color: #7a7a7a70;
-                        }
-                        &:visited {
-                           color: inherit;
-                        }
-                        &.active {
-                           color: orange;
-                        }
-                     }
-               `}
-               >
-                  {links.map(([href, title]) => (
-                     <a href={href} classList={{ active: href.length > 1 && urlPathname.startsWith(href) || urlPathname == href }}>
-                        {title}
-                     </a>
-                  ))}
-                  <a class={css`margin-left: auto; &:hover { color: #dedede }`} href="https://github.com/MrFoxPro/website" target="blank">
-                     src
-                  </a>
-               </nav>
-               <hr />
                <div class={css`
+                     margin-top: 10px;
                      display: flex;
                      gap: 10px;
                      align-items: center;
@@ -80,6 +53,33 @@ export function MainLayout(props) {
                      eth
                   </a>
                </div>
+               <hr />
+               <nav class={css`
+                     display: flex;
+                     gap: 10px;
+                     align-items: center;
+                     > a {
+                        &:hover {
+                           color: #7a7a7a70;
+                        }
+                        &:visited {
+                           color: inherit;
+                        }
+                        &.active {
+                           color: orange;
+                        }
+                     }
+               `}
+               >
+                  {links.map(([href, title]) => (
+                     <a href={href} classList={{ active: href.length > 1 && urlPathname.startsWith(href) || urlPathname == href }}>
+                        {title}
+                     </a>
+                  ))}
+                  <a class={css`margin-left: auto; &:hover { color: #dedede }`} href="https://github.com/MrFoxPro/website" target="blank">
+                     src
+                  </a>
+               </nav>
             </header>
          </NoHydration>
          {props.children}
