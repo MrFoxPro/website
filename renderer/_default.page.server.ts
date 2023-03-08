@@ -8,6 +8,7 @@ import type { InjectFilterEntry } from "vite-plugin-ssr"
 
 import { prepare, type PageContext } from "./common"
 import favicons from "./favicons.html?raw"
+import "./style"
 
 const hydrationScript = generateHydrationScript()
 
@@ -28,7 +29,7 @@ export async function render(ctx: PageContext) {
    const body = renderToString(() => Comp({}))
 
    const head = [favicons].concat(renderTags(tags))
-   if(hydrate) head.push(hydrationScript)
+   if (hydrate) head.push(hydrationScript)
 
    const assetsToSkip = new Set()
    if (!viteDevServer && _isHtmlOnly) {

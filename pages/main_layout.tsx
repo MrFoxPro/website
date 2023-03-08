@@ -11,37 +11,6 @@ const links = [
    ["/cv.en", "cv.en"],
 ] as const
 
-css`/* global */
-   * {
-      box-sizing: border-box;
-   }
-   :root {
-      background-color: black;
-      color: white;
-   }
-   body {
-      margin: 0;
-      padding: 8px;
-   }
-   :root, body {
-      min-height: 100vh;
-      min-width: 100vw;
-   }
-
-   a {
-      text-decoration: none;
-      &:not(:visited) {
-         color: inherit;
-      }
-      &:visited {
-         color: #885ad9;
-      }
-      &:active {
-         color: indianred;
-      }
-   }
-`
-
 export function MainLayout(props) {
    const { urlPathname } = getPageContext()
    return (
@@ -54,7 +23,6 @@ export function MainLayout(props) {
                <nav class={css`
                   margin-top: 10px;
                   > a {
-                     box-sizing: border-box;
                      & + a {
                         margin-inline-start: 10px;
                      }
@@ -75,13 +43,13 @@ export function MainLayout(props) {
                         {title}
                      </a>
                   ))}
-                  <a style={{ float: "right" }} href="https://github.com/MrFoxPro/website" target="blank">
+                  <a class={css`float: right; &:hover { color: #dedede !important }`} href="https://github.com/MrFoxPro/website" target="blank">
                      source
                   </a>
-                  <a style={{ float: "right" }} href="https://t.me/MrFoxPro" target="blank">
+                  <a class={css`float: right; &:hover { color: #5794e0 !important }`} href="https://t.me/MrFoxPro" target="blank">
                      tg
                   </a>
-                  <a style={{ float: "right" }} href="mailto:tuningiposadka@gmail.com" target="blank">
+                  <a class={css`float: right; &:hover { color: #e0575b !important }`} href="mailto:tuningiposadka@gmail.com" target="blank">
                      gmail
                   </a>
                </nav>
