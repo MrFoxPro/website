@@ -21,7 +21,7 @@ export async function render(ctx: PageContext) {
    const {
       exports: { hydrate },
       _isHtmlOnly,
-      _getPageAssets
+      __getPageAssets
    } = ctx
 
    const tags = []
@@ -35,7 +35,7 @@ export async function render(ctx: PageContext) {
 
    const assetsToSkip = new Set()
    if (!viteDevServer && _isHtmlOnly) {
-      const assets = await _getPageAssets()
+      const assets = await __getPageAssets()
       for (const { src, assetType } of assets) {
          if (assetType != "style") continue
          const css = await readFile(join(root, outDir, src))

@@ -4,7 +4,7 @@ import type { InjectFilterEntry, PageContextBuiltIn } from "vite-plugin-ssr"
 
 type HiddenContextProps = {
    _isHtmlOnly: boolean
-   _getPageAssets: () => Promise<InjectFilterEntry[]>
+   __getPageAssets: () => Promise<InjectFilterEntry[]>
 }
 export type PageContext<P = any> = PageContextBuiltIn<P> & {
    exports: { Layout: ParentComponent; hydrate?: boolean }
