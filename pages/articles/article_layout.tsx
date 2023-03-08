@@ -1,20 +1,15 @@
-import { css } from '@linaria/core'
-import { NavigationLayout } from '../nav_layout'
+import { css } from "@linaria/core"
+
+import { MainLayout } from "../main_layout"
 
 export function ArticleLayout(props) {
    return (
       <>
-         <NavigationLayout>
-            <div
-               class={css`
-                  p {
-                     color: purple;
-                  }
-               `}
-            >
+         <MainLayout>
+            <div class={css`p { color: purple; }`}>
                Blog layout
             </div>
-         </NavigationLayout>
+         </MainLayout>
          <article>{props.children}</article>
       </>
    )

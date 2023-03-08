@@ -1,26 +1,27 @@
 import { execSync } from "node:child_process"
 import Path from "node:path"
 import { fileURLToPath } from "node:url"
-import { EOL } from "node:os"
 
-import { visualizer as RollupVisualizer } from "rollup-plugin-visualizer"
 import ViteLinaria from "@linaria/vite"
-import postcss from "postcss"
+import PostCSSMixins from "postcss-mixins"
+import PostCSSNested from "postcss-nested"
+import { visualizer as RollupVisualizer } from "rollup-plugin-visualizer"
+import Stylefmt from "stylefmt"
 // import ViteAutoImport from 'unplugin-auto-import/vite'
+import RollupMDX from "@mdx-js/rollup"
+import RemarkBreaks from "remark-breaks"
+import RemarkGFM from "remark-gfm"
 import ViteCompression from "vite-plugin-compression"
 import ViteImagePresets from "vite-plugin-image-presets"
+import ViteInspect from "vite-plugin-inspect"
 import ViteSolid from "vite-plugin-solid"
 import ViteSolidSVG from "vite-plugin-solid-svg"
 import VPS from "vite-plugin-ssr/plugin"
-import RollupMDX from "@mdx-js/rollup"
-import ViteInspect from "vite-plugin-inspect"
-import RemarkGFM from "remark-gfm"
-import RemarkBreaks from "remark-breaks"
 // import RemarkTypograf from '@mavrin/remark-typograf'
-import RemarkFrontmatter from "remark-frontmatter"
-import RemarkMdxFrontmatter from "remark-mdx-frontmatter"
-import RemarkMath from "remark-math"
 import RemarkAutolinkHeadings from "rehype-autolink-headings"
+import RemarkFrontmatter from "remark-frontmatter"
+import RemarkMath from "remark-math"
+import RemarkMdxFrontmatter from "remark-mdx-frontmatter"
 import type { ConfigEnv, UserConfig } from "vite"
 
 export default ({ mode }: ConfigEnv) => {
@@ -60,15 +61,14 @@ export default ({ mode }: ConfigEnv) => {
                displayName: true,
                babelOptions: {
                   presets: [
-                     ["solid", { generate: "ssr", hydratable: false }],
+                     ["solid", { generate: "ssr" }],
                      ["@babel/typescript", { onlyRemoveTypeImports: true }],
                   ],
                },
-               // preprocessor: (selector, css) => {
-               // console.log('sele')
-               // const r = postcss.parse(selector + "{" + css + "}").toString()
-               // return r
-               // }
+               preprocessor: (selector, css) => {
+                  if (css.includes("/* global */")) return css
+                  return `${selector} {${css}}`
+               },
             }),
             enforce: "pre",
          },
@@ -122,11 +122,7 @@ export default ({ mode }: ConfigEnv) => {
       css: {
          modules: false,
          postcss: {
-            plugins: [],
-            map: {
-               // annotation: true,
-               annotation: "CSS ANNOTATION"
-            }
+            plugins: [Stylefmt, PostCSSMixins(), PostCSSNested(),],
          }
       },
       build: {
@@ -139,6 +135,7 @@ export default ({ mode }: ConfigEnv) => {
          reportCompressedSize: false,
          emptyOutDir: true,
          cssTarget: false,
+         minify: false
       },
    }
    return config

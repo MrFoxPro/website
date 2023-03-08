@@ -1,1 +1,1 @@
-export default "/blog/"
+export default "/blog"

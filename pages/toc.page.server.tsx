@@ -1,4 +1,5 @@
 import { Title } from "@solidjs/meta"
+import { NoHydration } from "solid-js/web"
 
 type Article = {
    title: string
@@ -14,7 +15,7 @@ const articles = Object.values(import.meta.glob<Article>("./articles/**/*.md(x)?
 // https://github.com/brillout/vite-plugin-ssr/discussions/680
 export function Page() {
    return (
-      <>
+      <NoHydration>
          <Title>Articles</Title>
          <h3>Articles</h3>
          <ul>
@@ -24,6 +25,6 @@ export function Page() {
                </li>
             ))}
          </ul>
-      </>
+      </NoHydration>
    )
 }

@@ -1,3 +1,3 @@
-import { NavigationLayout } from './nav_layout'
+import { MainLayout } from "./main_layout"
 
-export { NavigationLayout as Layout }
+export { MainLayout as Layout }

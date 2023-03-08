@@ -1,1 +1,1 @@
-export const filesystemRoutingRoot = '/blog'
+export const filesystemRoutingRoot = "/blog"

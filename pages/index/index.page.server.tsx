@@ -1,16 +1,18 @@
-import { css } from '@linaria/core'
+import { css } from "@linaria/core"
 
 export function Page() {
    return (
-      <main
-         class={css`
-         display: flex;
-         height: 100%;
-         margin: 0 auto;
+      <main class={css`
+         transform: translate(-50%, -50%);
+         position: absolute;
+         left: 50%;
+         top: 50%;
          font-size: 15vw;
-      `}
-      >
-         <span class={css`margin: 0 auto;`}>{'>^_^<'}</span>
+         > a {
+            text-decoration: none;
+         }
+      `}>
+         <a href="/">{">^_^<"}</a>
       </main>
    )
 }
