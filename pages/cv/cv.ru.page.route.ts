@@ -1,2 +1,2 @@
 
-export default '/cv.ru'
+export default "/cv.ru"

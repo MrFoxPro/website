@@ -1,16 +1,25 @@
 {
-    "eslint.codeAction.disableRuleComment": {
-        "enable": false,
-        "location": "separateLine",
-        "commentStyle": "line"
-    },
-    "eslint.codeAction.showDocumentation": {
-        "enable": false
-    },
-    "eslint.codeActionsOnSave.mode": "all",
-    "editor.codeActionsOnSave": {
-        "source.fixAll": true,
-        "source.organizeImports": true
-    },
-    "typescript.tsdk": "node_modules/typescript/lib",
+   "eslint.codeAction.disableRuleComment": {
+      "enable": false,
+      "location": "separateLine",
+      "commentStyle": "line"
+   },
+   "eslint.codeAction.showDocumentation": {
+      "enable": false
+   },
+   "typescript.tsdk": "node_modules/typescript/lib",
+   "eslint.rules.customizations": [
+      {
+         "rule": "*",
+         "severity": "downgrade"
+      } // reset all *syntax* rules to one lower than the original config,
+   ],
+   "workbench.colorCustomizations": {
+      "editorError.foreground": "#00000000",
+      "editorWarning.foreground": "#00000000",
+      "editorInfo.foreground": "#00000000"
+   },
+   "unocss.underline": false,
+   "inlineFold.regexFlags": "g",
+   "inlineFold.regexGroup": "6"
 }

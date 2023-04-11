@@ -12,7 +12,6 @@ export function Page() {
             text-decoration: none;
          }
       `}>
-         <a href="/">{">^_^<"}</a>
       </main>
    )
 }

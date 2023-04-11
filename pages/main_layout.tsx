@@ -1,4 +1,4 @@
-import { css } from "@linaria/core"
+import { css, cx } from "@linaria/core"
 import { NoHydration } from "solid-js/web"
 
 import { getPageContext } from "../renderer/common"
@@ -13,68 +13,71 @@ const links = [
 
 export function MainLayout(props) {
    const { urlPathname } = getPageContext()
+
+   const linkClass = css`
+      text-decoration: none;
+      &:visited {
+         color: inherit;
+         text-decoration: none;
+      }
+      &.active {
+         color: orange;
+      }
+      &:hover {
+         text-decoration: underline;
+      }
+   `
+   const underConstructionSvg = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80">
+         <style>.heavy { font: bold 30px sans-serif; }</style>
+         <text x="60" y="35" class="heavy">кот</text>
+      </svg>
+   `
+      .trim()
+      .replaceAll('"', "'")
    return (
       <>
          <NoHydration>
-            <header style={{ display: "flow-root" }}>
-               <div style={{ "font-size": "clamp(24px, 2.5vw, 36px)" }}>
+            <div
+               class={css`
+                  background-size: 200%;
+                  background-repeat: no-repeat;
+                  @keyframes slide {
+                     to {
+                        background-position-x: 100%;
+                     }
+                  }
+                  &:hover {
+                     animation: 15s infinite forwards slide;
+                     animation-timing-function: linear;
+                  }
+               `}
+            />
+            <header class="flow-root">
+               <div class="text-size-[clamp(24px,2.5vw,36px)]">
                   <b>foxpro</b> website
                </div>
-               <div class={css`
-                     margin-top: 10px;
-                     display: flex;
-                     gap: 10px;
-                     align-items: center;
-                     > a {
-                        &:visited {
-                           color: unset;
-                        }
-                        &.active {
-                           color: orange;
-                        }
-                     }
-                  `}>
-                  <a class={css`&:hover { color: #5794e0 !important }`} href="https://t.me/MrFoxPro" target="blank">
-                     tg
-                  </a>
-                  <a class={css`&:hover { color: #e0575b !important }`} href="mailto:tuningiposadka@gmail.com" target="blank">
-                     mail
-                  </a>
-                  <a class={css`&:hover { color: #e0575b !important }`} href="https://vk.com/mrfoxpro" target="blank">
-                     vk
-                  </a>
-                  <a class={css`margin-left: auto; &:hover { color: #e0575b !important }`} href="https://vk.com/mrfoxpro" target="blank">
-                     xmr
-                  </a>
-                  <a class={css`&:hover { color: #e0575b !important }`} href="https://vk.com/mrfoxpro" target="blank">
-                     btc
-                  </a>
-                  <a class={css`&:hover { color: #e0575b !important }`} href="https://vk.com/mrfoxpro" target="blank">
-                     eth
-                  </a>
-               </div>
                <hr />
-               <nav class={css`
+               <nav
+                  class={css`
                      display: flex;
                      gap: 10px;
                      align-items: center;
-                     > a {
-                        &:visited {
-                           color: inherit;
-                        }
-                        &.active {
-                           color: orange;
-                        }
-                     }
-               `}
-               >
+                     text-decoration: none;
+                     font-family: Consolas;
+                  `}>
                   {links.map(([href, title]) => (
-                     <a href={href} classList={{ active: href.length > 1 && urlPathname.startsWith(href) || urlPathname == href }}>
+                     <a
+                        class={linkClass}
+                        href={href}
+                        classList={{
+                           active: (href.length > 1 && urlPathname.startsWith(href)) || urlPathname == href,
+                        }}>
                         {title}
                      </a>
                   ))}
-                  <a class={css`margin-left: auto; &:hover { color: #dedede }`} href="https://github.com/MrFoxPro/website" target="blank">
-                     src
+                  <a class={cx(linkClass, "m-l-auto")} href="https://github.com/MrFoxPro/website" target="blank">
+                     source
                   </a>
                </nav>
             </header>

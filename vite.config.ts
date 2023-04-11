@@ -2,11 +2,10 @@ import { execSync } from "node:child_process"
 import Path from "node:path"
 import { fileURLToPath } from "node:url"
 
-import ViteLinaria from "@linaria/vite"
 import PostCSSMixins from "postcss-mixins"
+import ViteLinaria from "@linaria/vite"
 import PostCSSNested from "postcss-nested"
 import { visualizer as RollupVisualizer } from "rollup-plugin-visualizer"
-import Stylefmt from "stylefmt"
 // import ViteAutoImport from 'unplugin-auto-import/vite'
 import RollupMDX from "@mdx-js/rollup"
 import RemarkBreaks from "remark-breaks"
@@ -22,6 +21,8 @@ import RemarkAutolinkHeadings from "rehype-autolink-headings"
 import RemarkFrontmatter from "remark-frontmatter"
 import RemarkMath from "remark-math"
 import RemarkMdxFrontmatter from "remark-mdx-frontmatter"
+import StyleFmt from "stylefmt"
+import ViteUnoCSS from "unocss/vite"
 import type { ConfigEnv, UserConfig } from "vite"
 
 export default ({ mode }: ConfigEnv) => {
@@ -53,9 +54,7 @@ export default ({ mode }: ConfigEnv) => {
          },
       },
       plugins: [
-         // There is problem with plugins order with linaria.
-         // Place it only here! with enforce: 'pre'!
-         // Also, there are problems with auto-import plugin -_- because it's 'pre'
+         ViteUnoCSS(),
          {
             ...ViteLinaria({
                displayName: true,
@@ -69,9 +68,13 @@ export default ({ mode }: ConfigEnv) => {
                   if (css.includes("/* global */")) return css
                   return `${selector} {${css}}`
                },
+               evaluate: false,
             }),
             enforce: "pre",
          },
+         // There is problem with plugins order with linaria.
+         // Place it only here! with enforce: 'pre'!
+         // Also, there are problems with auto-import plugin -_- because it's 'pre'
          ViteSolid({
             dev: dev,
             hot: dev,
@@ -122,7 +125,7 @@ export default ({ mode }: ConfigEnv) => {
       css: {
          modules: false,
          postcss: {
-            plugins: [Stylefmt, PostCSSMixins(), PostCSSNested(),],
+            plugins: [PostCSSMixins(), PostCSSNested(), StyleFmt],
          }
       },
       build: {

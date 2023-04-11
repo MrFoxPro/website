@@ -8,7 +8,6 @@ import type { InjectFilterEntry } from "vite-plugin-ssr"
 
 import { prepare, type PageContext } from "./common"
 import favicons from "./favicons.html?raw"
-import "./style"
 
 const hydrationScript = generateHydrationScript()
 
@@ -49,7 +48,7 @@ export async function render(ctx: PageContext) {
                <meta name="viewport" content="width=device-width, initial-scale=1" />
                ${head.join("\n")}
             </head>
-            <body>${body}</body>
+            <body class="@dark:(bg-black color-white)">${body}</body>
          </html>
       `
 

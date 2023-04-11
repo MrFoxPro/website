@@ -1,0 +1,16 @@
+{
+   "semi": false,
+   "endOfLine": "lf",
+   "tabWidth": 3,
+   "printWidth": 115,
+   "arrowParens": "avoid",
+   "bracketSameLine": true,
+   "editorconfig": true,
+   "embeddedLanguageFormatting": "auto",
+   "jsxSingleQuote": false,
+   "quoteProps": "consistent",
+   "proseWrap": "always",
+   "singleQuote": false,
+   "singleAttributePerLine": false,
+   "trailingComma": "es5"
+}

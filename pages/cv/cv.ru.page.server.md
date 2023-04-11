@@ -1,7 +1,7 @@
 # Никифоров Дмитрий Алексеевич
+Разработчик. Россия, Екатеринбург
+
 [Telegram](https://t.me/MrFoxPro) [Github](https://github.com/MrFoxPro) [StackOverflow](https://stackoverflow.com/users/8086153/foxpro)
-### Разработчик
-### Россия, Екатеринбург
 
 ## О себе
 Я заинтересован в работе над проектами, представляющими социально-культурную или научную ценность.
@@ -9,7 +9,26 @@
 Стремлюсь решать задачи, выбирая самые оптимальные и производительные инструменты, думая в первую очередь о пользователе и не в последнюю – о тиммейтах.
 WebGPU, Biotech, Rust, Nix, – темы, в которых я хотел бы освоиться и развиваться.
 
-Навыки: 
+Навыки: Я умею готовить интерактивный фронтенд, делать фичи на бэкенде и настраивать CI/CD. Я знаю технический английский, хорошо понимаю устный английский и могу на нем изъясняться.
+
+Платформы:
+`Node` `Deno` `.NET`
+Бэкенд фреймворки:
+`Nest` `Keystone` `ASP` `Knex` `Sequelize` `MicroORM` `Dapper` `Entity Framework`
+Языки верстки:
+`CSS` `SASS` `SCSS`
+Процессоры стилей:
+`UnoCSS` `PostCSS` `Linaria` `styled-components`
+Инструменты сборки:
+`Vite` `vite-plugin-ssr` `esbuild` `SWC` `Rollup` `Webpack`
+Фронтенд-фреймворки:
+`SolidJS` `Astro` `Svelte` `Inferno` `Vue` `React`
+Остальное:
+`WebGPU` `Playwright`
+`Github CI` `Gitlab CI` `Nix (+/-)` `Linux`
+`NativeScript` `React Native`
+`Unity`
+`Игровые моды`
 
 Опыт: ~5 лет
 
@@ -18,7 +37,7 @@ WebGPU, Biotech, Rust, Nix, – темы, в которых я хотел бы �
 *Июль 2021 – Февраль 2022*
 
 ● Разработка платформы для взаимодействия жильцов и УК.
-`KeystoneJS, GraphQL, Jest, Github CI/CD`
+`KeystoneJS` `GraphQL` `Jest` `Github CI/CD`
 [source](https://github.com/open-condo-software/condo)
 
 ----------
@@ -27,22 +46,22 @@ WebGPU, Biotech, Rust, Nix, – темы, в которых я хотел бы �
 *Декабрь 2019 – Август 2020*
 
 ● Поддержка и доработка бэкенда и фронтенда веб-приложения для трейдинга.
-`NodeJS, HandleBars, Docker, Gitlab CI/CD, Vue`
+`NodeJS` `HandleBars` `Docker` `Gitlab CI/CD` `Vue`
 
 ● Тестирование нового фронтенда книжного магазина.
 `Cypress`
 
 ● Верстка и бизнес-логика корпоративного портала.
-`React, Typescript, SCSS, GraphQL, Docker, Gitlab CI/CD`
+`React` `Typescript` `SCSS` `GraphQL` `Docker` `Gitlab CI/CD`
 
 ● Разработка расширения для браузеров Chrome, Firefox.
-`Web Extension API, React, Typescript, CSS, Gitlab CI/CD`
+`Web Extension API` `React` `Typescript` `CSS` `Gitlab CI/CD`
 
 ● Разработка интерактивной страницы с WebAR на платформе Zappar.
-`TypeScript, Zappar`
+`TypeScript` `Zappar`
 
 ● Доработка промо-лендингов.
-`HTML, CSS`
+`HTML` `CSS`
 
 ● Верстка и изменение, добавление логики фронтенда.
 `Svelte`
@@ -56,7 +75,7 @@ WebGPU, Biotech, Rust, Nix, – темы, в которых я хотел бы �
 
 ### Фриланс
 ● Визуализации работы гироскопа в 3D.
-`Unity 3D, C#`
+`Unity 3D` `C#`
 
 ● Верстка сайтов.
 
@@ -68,15 +87,16 @@ WebGPU, Biotech, Rust, Nix, – темы, в которых я хотел бы �
 🟢 – Закончен
 
 🟡 Система управления знаниями Bloki. 
-`WebGPU, Typescript, SolidJS, Rust, EdgeDB`
+*Защитил диплом по проекту. Участвовал в [хакатоне](https://youtu.be/j6TPQQcRjiw?t=524)*
+`WebGPU` `Typescript` `SolidJS` `Rust` `EdgeDB`
 [source](https://github.com/MrFoxPro/bloki) [video](https://youtu.be/PsEwt068DGk) [demo](https://old.bloki.app)
 
 🟡 Универсальная образовательная платформа полного цикла Маркбук.
-`Solid JS, Typescript, SCSS, ASP.NET, Entity Framework Core`
+`Solid JS` `Typescript` `SCSS` `ASP.NET` `Entity Framework Core`
 [demo](https://маркбук.рф)
 
 🟢 Мобильное приложение “Остановочка” для отображения транспорта г. Екатеринбурга с фотографиями и маршрутами.
-`React Native, Google Maps API`
+`React Native` `Google Maps API`
 [source](https://play.google.com/store/apps/details?id=com.foxpro.mystop)
 
 🟢 Небольшие работы на гитхабе.
@@ -87,16 +107,16 @@ WebGPU, Biotech, Rust, Nix, – темы, в которых я хотел бы �
 - [Astro SVG components](https://github.com/MrFoxPro/astro-svg-components)
 
 🔴 Игровой проект для GTA 5 на платформе RAGE Multiplayer.
-`C#, EF Core, Typescript, Solid JS, SCSS, NSWAG, Gitlab CI/CD`
+`C#` `EF Core` `Typescript` `Solid JS` `SCSS` `NSWAG` `Gitlab CI/CD`
 [video](https://youtu.be/yO5Eh1O7hu4) [video](https://youtu.be/FVEyBlaWUH0) [video](https://youtu.be/8dklgOaIZKc) [video](https://youtu.be/577mfkMPw2I) [video](https://youtu.be/6bI9qxQSChg)
 
 🟢 Различные устройства и роботы на Arduino, RPI.
-`C, Python, обмен данными по UART, I2C`
+`C` `Python` `обмен данными по UART` `I2C`
 [video](https://youtu.be/vFrA2IepCgY)
 
 🟢 Мобильный клиент для ресурса Дневник.Ру.
-*перестало быть актуальным, снеснео Google*
-`React Native, REST`
+*перестало быть актуальным, снесено гуглом*
+`React Native` `REST`
 [video](https://vk.com/markbook_mobile)
 
 🟢 Скрипты и дополнения для мультиплеерного мода SAMP.
@@ -104,13 +124,13 @@ WebGPU, Biotech, Rust, Nix, – темы, в которых я хотел бы �
 [source](https://www.blast.hk/threads/22886/post-682482)
 
 🔴 Игра в жанре гонок на Unity 3D с мультиплеером.
-`Unity 3D, C#, UDP, NodeJS`
+`Unity 3D` `C#` `UDP` `NodeJS`
 [video](https://youtube.com/watch?v=gciYUXdWXtk) [video](https://youtu.be/PqFsgA2MB9I) [video](https://youtu.be/wVNpyazp-As)
 
 🔴 Боты для телеграмма: 
 Caturday - по команде присылает картинки котиков. 
 dead friend - публикует в канал информацию из википедии по вымершим животным из красной книги.
-`Python, Node`
+`Python` `Node`
 [demo](https://t.me/+RviyfJcAMagzy37V)
 
 # Образование
